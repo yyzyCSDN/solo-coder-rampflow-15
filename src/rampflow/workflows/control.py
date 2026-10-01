@@ -128,3 +128,12 @@ class RampWorkflowControl:
 
     def publish_apron_movement_safety(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
         return self._guard(operation_id, "apron.movement.safety.decided", subject, at, action, requirements=requirements)
+
+    def commit_fuel_spill_cordon(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
+        return self._guard(operation_id, "fuel.spill.cordon.committed", subject, at, action, requirements=requirements)
+
+    def commit_fuel_spill_resources(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
+        return self._guard(operation_id, "fuel.spill.resources.mustered", subject, at, action, requirements=requirements)
+
+    def reopen_fuel_spill_area(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
+        return self._guard(operation_id, "fuel.spill.area.reopened", subject, at, action, requirements=requirements)
